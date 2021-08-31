@@ -11,7 +11,7 @@ app.use(cors({optionsSuccessStatus: 200}));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(initialRouter);
-app.use('/api/', apiRouter)
+app.use('/api', apiRouter)
 
 
 

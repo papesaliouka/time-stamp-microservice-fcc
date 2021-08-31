@@ -1,15 +1,15 @@
 
 
 function dateController(req,res){
-    if(req.params.date){
-        let date = Date.now();
-        let str = Date(req.params.date).toString();
-        let data = {unix: date, utc: str}
-        res.send(data)
+    let date = new Date(req.params.date);
+    if(req.params.date.length<4){
+        res.json({error: 'Invalid Date'})
+        res.end()
     }else{
-        res.send({error: 'Invalid Date'})
+        let data = {unix: date.valueOf(), utc: date.toString()}
+        res.json(data);
+        res.end()
     }
-    res.end()
 }
 
 function emptyDateController(req,res){
